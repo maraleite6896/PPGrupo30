@@ -19,11 +19,11 @@ public class AmbulanceClass implements Ambulance {
     private EmergencyType ambulanceType;
     
     public AmbulanceClass(String plate, EmergencyType ambulanceType, int maxPassengers, int maxUrgents) {
-    this.plate = plate;
-    this.ambulanceType = ambulanceType;
-    this.maxPassengers = maxPassengers;
-    this.maxUrgents = maxUrgents;
-}
+        this.plate = plate;
+        this.ambulanceType = ambulanceType;
+        this.maxPassengers = maxPassengers;
+        this.maxUrgents = maxUrgents;
+    }
 
     @Override
     public String getPlate() {
@@ -49,5 +49,4 @@ public class AmbulanceClass implements Ambulance {
     public String toString() {
         return "AmbulanceClass{" + "plate=" + plate + ", maxPassengers=" + maxPassengers + ", maxUrgents=" + maxUrgents + ", ambulanceType=" + ambulanceType + '}';
     }
-
 }

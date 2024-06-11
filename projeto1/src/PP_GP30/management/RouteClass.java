@@ -5,7 +5,6 @@
 package PP_GP30.management;
 
 import com.estg.core.Ambulance;
-import com.estg.core.EmergencyType;
 import com.estg.core.Pathology;
 import com.estg.core.Service;
 import com.estg.dailyManagement.Route;
@@ -94,25 +93,24 @@ public class RouteClass implements Route{
 
     private boolean isServiceCompatible(Service service) {
         // Verifica se o tipo de emergência da ambulância é compatível com a patologia do serviço
-        /*for (Pathology pathology : service.getPathologies()) {
-            if (pathology.getEmergencyType() == EmergencyType.URGENT && // quando criar tipos de emerggencia
-                ambulance.getAmbulanceType() != EmergencyType.URGENT) {
+        Pathology[] patology = service.getPathologies();
+        for(int i = 0; i < service.getPathologies().length; i++){
+            if(this.getAmbulance().getAmbulanceType() != patology[i].getEmergenceType()){
                 return false;
             }
-        }*/
-        return true;
-    
+        }
+        return true;    
     }
 
     @Override
     public boolean containsService(Service srvc) {
         
        for (Service existingService : services) {
-        if (existingService.equals(srvc)) {
-            return true; // O serviço está na rota
+            if (existingService.equals(srvc)) {
+                return true; // O serviço está na rota
+            }
         }
-    }
-    return false; // o serviço nao esta na rota
+        return false; // o serviço nao esta na rota
     }
 
     @Override
@@ -120,7 +118,11 @@ public class RouteClass implements Route{
         if (srvc == null) {
             throw new RouteException("O serviço é nulo.");
         }
-
+        
+        if (services == null || services.length == 0) {
+            throw new RouteException("Não há serviços na rota.");
+        }
+        
         boolean found = false;
         int index = -1;
         for (int i = 0; i < services.length; i++) {
@@ -139,9 +141,7 @@ public class RouteClass implements Route{
 
         // Remover o serviço da lista de serviços da rota
         Service[] newServices = new Service[services.length - 1];
-        if (index > 0) {
-            System.arraycopy(services, 0, newServices, 0, index);
-        }
+         
         if (index < services.length - 1) {
             System.arraycopy(services, index + 1, newServices, index, services.length - index - 1);
         }
@@ -188,40 +188,40 @@ public class RouteClass implements Route{
     @Override
     public void insertAfter(Service oldService, Service newService) throws RouteException {
         
-         if (oldService == null || newService == null) {
-        throw new RouteException("O serviço é nulo.");
-    }
-
-    boolean found = false;
-    int index = -1;
-    for (int i = 0; i < services.length; i++) {
-        if (services[i].equals(oldService)) {
-            found = true;
-            index = i;
-            break;
+        if (oldService == null || newService == null) {
+            throw new RouteException("O serviço é nulo.");
         }
-    }
 
-    if (!found) {
-        throw new RouteException("O serviço antigo não está na rota.");
-    }
-
-    for (Service existingService : services) {
-        if (existingService.equals(newService)) {
-            throw new RouteException("O serviço novo já está na rota.");
+        boolean found = false;
+        int index = -1;
+        for (int i = 0; i < services.length; i++) {
+            if (services[i].equals(oldService)) {
+                found = true;
+                index = i;
+                break;
+            }
         }
-    }
 
-    if (!isServiceCompatible(newService)) {
-        throw new RouteException("O serviço novo não é compatível com a ambulância da rota.");
-    }
+        if (!found) {
+            throw new RouteException("O serviço antigo não está na rota.");
+        }
 
-    // Inserir o novo serviço após o serviço antigo na lista de serviços da rota
-    Service[] newServices = new Service[services.length + 1];
-    System.arraycopy(services, 0, newServices, 0, index + 1);
-    newServices[index + 1] = newService;
-    System.arraycopy(services, index + 1, newServices, index + 2, services.length - (index + 1));
-    services = newServices;
+        for (Service existingService : services) {
+            if (existingService.equals(newService)) {
+                throw new RouteException("O serviço novo já está na rota.");
+            }
+        }
+
+        if (!isServiceCompatible(newService)) {
+            throw new RouteException("O serviço novo não é compatível com a ambulância da rota.");
+        }
+
+        // Inserir o novo serviço após o serviço antigo na lista de serviços da rota
+        Service[] newServices = new Service[services.length + 1];
+        System.arraycopy(services, 0, newServices, 0, index + 1);
+        newServices[index + 1] = newService;
+        System.arraycopy(services, index + 1, newServices, index + 2, services.length - (index + 1));
+        services = newServices;
     }
 
     @Override

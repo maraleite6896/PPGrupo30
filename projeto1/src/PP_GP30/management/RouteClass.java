@@ -154,7 +154,7 @@ public class RouteClass implements Route{
     public void replaceService(Service oldService, Service newService) throws RouteException {
         
         if (oldService == null || newService == null) {
-        throw new RouteException("O serviço é nulo.");
+            throw new RouteException("O serviço é nulo.");
         }
 
         boolean found = false;
@@ -227,6 +227,5 @@ public class RouteClass implements Route{
     @Override
     public double getTotalDuration() {
        return totalDuration;
-    }
-    
+    }    
 }

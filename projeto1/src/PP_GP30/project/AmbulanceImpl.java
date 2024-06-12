@@ -27,22 +27,22 @@ public class AmbulanceImpl implements Ambulance {
 
     @Override
     public String getPlate() {
-        return plate;
+        return this.plate;
     }
 
     @Override
     public int getMaxPassengers() {
-        return maxPassengers;
+        return this.maxPassengers;
     }
 
     @Override
     public int getMaxUrgents() {
-        return maxUrgents;
+        return this.maxUrgents;
     }
 
     @Override
     public EmergencyType getAmbulanceType() {
-        return ambulanceType;
+        return this.ambulanceType;
     }
 
     @Override

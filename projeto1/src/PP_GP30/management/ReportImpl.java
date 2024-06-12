@@ -26,37 +26,37 @@ public class ReportImpl implements Report {
 
     @Override
     public LocalDateTime getDate() {
-        return date;
+        return this.date;
     }
 
     @Override
     public double getTotalDuration() {
-        return totalDuration;
+        return this.totalDuration;
     }
 
     @Override
     public int getNumberOfServices(EmergencyType et) {
-        return numberOfServices;
+        return this.numberOfServices;
     }
 
     @Override
     public int getNumberOfRoutes() {
-        return numberOfRoutes;
+        return this.numberOfRoutes;
     }
 
     @Override
     public int getNumberOfClients() {
-        return numberOfClients;
+        return this.numberOfClients;
     }
 
     @Override
     public int getNumberOfServicesByPathology(Pathology pthlg) {
-        return numberOfServicesPathology;
+        return this.numberOfServicesPathology;
     }
 
     @Override
     public int getNumberOfServicesByPathology(PathologyType pt) {
-        return numberOfServicesByPathology;
+        return this.numberOfServicesByPathology;
     }
 
 }

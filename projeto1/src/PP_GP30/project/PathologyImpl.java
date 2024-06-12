@@ -24,12 +24,12 @@ public class PathologyImpl implements Pathology {
 
     @Override
     public PathologyType getPathologyType() {
-        return pathologyType;
+        return this.pathologyType;
     }
 
     @Override
     public EmergencyType getEmergenceType() {
-        return emergenceType;
+        return this.emergenceType;
     }
 
 }

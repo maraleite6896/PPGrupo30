@@ -33,37 +33,37 @@ public class DestinationImpl implements Destination {
 
     @Override
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     @Override
     public DestinationType getDestinationType() {
-        return destinationType;
+        return this.destinationType;
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public DurationToOtherDestinationsImpl[] getDurationTableToOtherDestinations() {
-        return durationTableToOtherDestinations;
+        return this.durationTableToOtherDestinations;
     }
 
     @Override
     public int getDurationToDestination(Destination dstntn) {
-        return durationToDestination;
+        return this.durationToDestination;
     }
 
     @Override
     public double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     @Override
     public double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
 }

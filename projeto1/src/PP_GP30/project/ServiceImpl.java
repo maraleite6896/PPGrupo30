@@ -29,22 +29,22 @@ public class ServiceImpl implements Service {
 
     @Override
     public int getNumberOfService() {
-        return numberOfService;
+        return this.numberOfService;
     }
 
     @Override
     public Client getClient() {
-        return client;
+        return this.client;
     }
 
     @Override
     public Pathology[] getPathologies() {
-        return pathologies;
+        return this.pathologies;
     }
 
     @Override
     public Destination getDestination() {
-        return destination;
+        return this.destination;
     }
 
 }

@@ -36,27 +36,27 @@ public class RouteImpl implements Route {
 
     @Override
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     @Override
     public Ambulance getAmbulance() {
-        return ambulance;
+        return this.ambulance;
     }
 
     @Override
     public LocalDateTime getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
     @Override
     public LocalDateTime getEndDate() {
-        return endDate;
+        return this.endDate;
     }
 
     @Override
     public Service[] getServices() {
-        return services;
+        return this.services;
     }
 
     @Override

@@ -42,22 +42,22 @@ public class FireDepartmentImpl implements FireDepartment {
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public Client[] getClients() {
-        return clients;
+        return this.clients;
     }
 
     @Override
     public Service[] getServices() {
-        return services;
+        return this.services;
     }
 
     @Override
     public Ambulance[] getAmbulances() {
-        return ambulances;
+        return this.ambulances;
     }
 
     @Override

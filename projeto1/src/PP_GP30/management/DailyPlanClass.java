@@ -19,12 +19,12 @@ public class DailyPlanClass implements DailyPlan {
 
     @Override
     public LocalDateTime getDate() {
-        return date;
+        return this.date;
     }
 
     @Override
     public Route[] getRoutes() {
-        return routes;
+        return this.routes;
     }
 
 }

@@ -22,12 +22,12 @@ public class DurationToOtherDestinationsImpl implements DurationToOtherDestinati
 
     @Override
     public int getId() {
-        return id;
+        return this.id;
     }
 
     @Override
     public int getDuration() {
-        return duration;
+        return this.duration;
     }
 
 }

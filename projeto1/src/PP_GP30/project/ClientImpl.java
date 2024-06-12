@@ -29,22 +29,22 @@ public class ClientImpl implements Client {
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public Gender getGender() {
-        return gender;
+        return this.gender;
     }
 
     @Override
     public int getNISS() {
-        return niss;
+        return this.niss;
     }
 
     @Override
     public LocalDate getBirthDate() {
-        return birthDate;
+        return this.birthDate;
 
     }
 

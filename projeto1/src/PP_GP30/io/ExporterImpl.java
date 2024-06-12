@@ -6,19 +6,18 @@ package PP_GP30.io;
 
 import com.estg.core.FireDepartment;
 import com.estg.core.exceptions.FireDepartmentException;
-import com.estg.io.Importer;
-import java.io.FileNotFoundException;
+import com.estg.io.Exporter;
 import java.io.IOException;
 
 /**
  *
  * @author maraleite
  */
-public class ImporterClass implements Importer{
+public class ExporterImpl implements Exporter {
 
     @Override
-    public void importData(FireDepartment fd) throws FileNotFoundException, IOException, FireDepartmentException {
+    public void exportData(FireDepartment fd) throws IOException, FireDepartmentException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

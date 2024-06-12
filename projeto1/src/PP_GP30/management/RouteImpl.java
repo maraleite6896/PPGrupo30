@@ -11,14 +11,12 @@ import com.estg.dailyManagement.Route;
 import com.estg.dailyManagement.exceptions.RouteException;
 import java.time.LocalDateTime;
 
-
-
 /**
  *
  * @author maraleite
  */
-public class RouteClass implements Route{
-    
+public class RouteImpl implements Route {
+
     private String code;
     private Ambulance ambulance;
     private LocalDateTime startDate;
@@ -26,9 +24,8 @@ public class RouteClass implements Route{
     private Service services[];
     private boolean containsService;
     private double totalDuration;
-    
 
-   public RouteClass(String code, Ambulance ambulance, LocalDateTime startDate) {
+    public RouteImpl(String code, Ambulance ambulance, LocalDateTime startDate) {
         this.code = code;
         this.ambulance = ambulance;
         this.startDate = startDate;
@@ -36,9 +33,6 @@ public class RouteClass implements Route{
         this.containsService = false;
         this.totalDuration = 0;
     }
-
-
-  
 
     @Override
     public String getCode() {
@@ -52,7 +46,7 @@ public class RouteClass implements Route{
 
     @Override
     public LocalDateTime getStartDate() {
-       return startDate;
+        return startDate;
     }
 
     @Override
@@ -67,8 +61,8 @@ public class RouteClass implements Route{
 
     @Override
     public void addService(Service srvc) throws RouteException {
-        
-       if (srvc == null) {
+
+        if (srvc == null) {
             throw new RouteException("O serviço é nulo.");
         }
 
@@ -94,18 +88,18 @@ public class RouteClass implements Route{
     private boolean isServiceCompatible(Service service) {
         // Verifica se o tipo de emergência da ambulância é compatível com a patologia do serviço
         Pathology[] patology = service.getPathologies();
-        for(int i = 0; i < service.getPathologies().length; i++){
-            if(this.getAmbulance().getAmbulanceType() != patology[i].getEmergenceType()){
+        for (int i = 0; i < service.getPathologies().length; i++) {
+            if (this.getAmbulance().getAmbulanceType() != patology[i].getEmergenceType()) {
                 return false;
             }
         }
-        return true;    
+        return true;
     }
 
     @Override
     public boolean containsService(Service srvc) {
-        
-       for (Service existingService : services) {
+
+        for (Service existingService : services) {
             if (existingService.equals(srvc)) {
                 return true; // O serviço está na rota
             }
@@ -118,11 +112,11 @@ public class RouteClass implements Route{
         if (srvc == null) {
             throw new RouteException("O serviço é nulo.");
         }
-        
+
         if (services == null || services.length == 0) {
             throw new RouteException("Não há serviços na rota.");
         }
-        
+
         boolean found = false;
         int index = -1;
         for (int i = 0; i < services.length; i++) {
@@ -141,7 +135,7 @@ public class RouteClass implements Route{
 
         // Remover o serviço da lista de serviços da rota
         Service[] newServices = new Service[services.length - 1];
-         
+
         if (index < services.length - 1) {
             System.arraycopy(services, index + 1, newServices, index, services.length - index - 1);
         }
@@ -152,7 +146,7 @@ public class RouteClass implements Route{
 
     @Override
     public void replaceService(Service oldService, Service newService) throws RouteException {
-        
+
         if (oldService == null || newService == null) {
             throw new RouteException("O serviço é nulo.");
         }
@@ -187,7 +181,7 @@ public class RouteClass implements Route{
 
     @Override
     public void insertAfter(Service oldService, Service newService) throws RouteException {
-        
+
         if (oldService == null || newService == null) {
             throw new RouteException("O serviço é nulo.");
         }
@@ -226,6 +220,6 @@ public class RouteClass implements Route{
 
     @Override
     public double getTotalDuration() {
-       return totalDuration;
-    }    
+        return totalDuration;
+    }
 }

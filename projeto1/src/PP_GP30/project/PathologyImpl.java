@@ -8,22 +8,20 @@ import com.estg.core.EmergencyType;
 import com.estg.core.Pathology;
 import com.estg.core.PathologyType;
 
-
 /**
  *
  * @author maraleite
  */
-public class PathologyClass implements Pathology {
+public class PathologyImpl implements Pathology {
 
     private PathologyType pathologyType;
     private EmergencyType emergenceType;
-    
-     public PathologyClass(PathologyType pathologyType, EmergencyType emergenceType) {
+
+    public PathologyImpl(PathologyType pathologyType, EmergencyType emergenceType) {
         this.pathologyType = pathologyType;
         this.emergenceType = emergenceType;
     }
-    
-    
+
     @Override
     public PathologyType getPathologyType() {
         return pathologyType;
@@ -33,5 +31,5 @@ public class PathologyClass implements Pathology {
     public EmergencyType getEmergenceType() {
         return emergenceType;
     }
-    
+
 }

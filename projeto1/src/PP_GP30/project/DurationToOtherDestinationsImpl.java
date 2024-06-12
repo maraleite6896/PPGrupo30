@@ -10,17 +10,16 @@ import com.estg.core.DurationToOtherDestinations;
  *
  * @author maraleite
  */
-public class DurationToOtherDestinationsClass implements DurationToOtherDestinations {
+public class DurationToOtherDestinationsImpl implements DurationToOtherDestinations {
 
     private int id;
     private int duration;
-    
-    public DurationToOtherDestinationsClass(int id, int duration) {
+
+    public DurationToOtherDestinationsImpl(int id, int duration) {
         this.id = id;
         this.duration = duration;
     }
 
-    
     @Override
     public int getId() {
         return id;
@@ -30,5 +29,5 @@ public class DurationToOtherDestinationsClass implements DurationToOtherDestinat
     public int getDuration() {
         return duration;
     }
-    
+
 }

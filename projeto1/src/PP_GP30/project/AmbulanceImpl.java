@@ -11,14 +11,14 @@ import com.estg.core.EmergencyType;
  *
  * @author maraleite
  */
-public class AmbulanceClass implements Ambulance {
+public class AmbulanceImpl implements Ambulance {
 
     private String plate;
     private int maxPassengers;
     private int maxUrgents;
     private EmergencyType ambulanceType;
-    
-    public AmbulanceClass(String plate, EmergencyType ambulanceType, int maxPassengers, int maxUrgents) {
+
+    public AmbulanceImpl(String plate, EmergencyType ambulanceType, int maxPassengers, int maxUrgents) {
         this.plate = plate;
         this.ambulanceType = ambulanceType;
         this.maxPassengers = maxPassengers;
@@ -42,7 +42,7 @@ public class AmbulanceClass implements Ambulance {
 
     @Override
     public EmergencyType getAmbulanceType() {
-       return ambulanceType;
+        return ambulanceType;
     }
 
     @Override

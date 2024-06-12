@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
  *
  * @author maraleite
  */
-public class FireDepartmentClass implements FireDepartment{
+public class FireDepartmentImpl implements FireDepartment {
 
     private String name;
     private Client clients[];
@@ -28,22 +28,21 @@ public class FireDepartmentClass implements FireDepartment{
     private Ambulance ambulances[];
     private boolean ambulance;
     private DailyPlan dailyPlans[];
-    private DailyPlan dailyPan; 
+    private DailyPlan dailyPan;
     private boolean addDailyPlan;
     private boolean addClient;
     private boolean addService;
-    
-    public FireDepartmentClass(String name, Client[] clients, Service[] services, Ambulance[] ambulances) {
+
+    public FireDepartmentImpl(String name, Client[] clients, Service[] services, Ambulance[] ambulances) {
         this.name = name;
         this.clients = clients;
         this.services = services;
         this.ambulances = ambulances;
     }
 
-    
     @Override
     public String getName() {
-       return name;
+        return name;
     }
 
     @Override
@@ -53,7 +52,7 @@ public class FireDepartmentClass implements FireDepartment{
 
     @Override
     public Service[] getServices() {
-       return services;
+        return services;
     }
 
     @Override
@@ -63,17 +62,17 @@ public class FireDepartmentClass implements FireDepartment{
 
     @Override
     public boolean addAmbulance(Ambulance amblnc) throws AmbulanceException {
-        
+
         if (ambulances == null) {
             throw new AmbulanceException("The ambulance is null.");
         }
-    
+
         for (Ambulance existingAmbulance : ambulances) {
             if (existingAmbulance.equals(amblnc)) {
                 return false; // Ambulance already exists
             }
         }
-    
+
         // Add the ambulance to the collection of ambulances
         Ambulance[] newAmbulances = new Ambulance[ambulances.length + 1];
         System.arraycopy(ambulances, 0, newAmbulances, 0, ambulances.length);
@@ -81,72 +80,73 @@ public class FireDepartmentClass implements FireDepartment{
         ambulances = newAmbulances;
 
         return true; // Ambulance was inserted successfully
-       
+
     }
 
     @Override
     public DailyPlan[] getDailyPlans() {
-       return dailyPlans;
+        return dailyPlans;
     }
 
     /**
-     * 
+     *
      * @param ldt data de inicio
      * @param ldt1 data do fim
-     * @return em caso de sucesso retorna a lista de daily plans que existem 
-     * entre as duas datas, caso as datas não consistem num intervalo de tempo 
+     * @return em caso de sucesso retorna a lista de daily plans que existem
+     * entre as duas datas, caso as datas não consistem num intervalo de tempo
      * válido retona null
      */
     @Override
     public DailyPlan[] getDailyPlans(LocalDateTime ldt, LocalDateTime ldt1) {
-       
-        if(ldt1.isBefore(ldt) && ldt.isAfter(ldt1)){
+
+        if (ldt1.isBefore(ldt) && ldt.isAfter(ldt1)) {
             return null;
         }
-  
+
         DailyPlan[] dailyPlan;
         dailyPlan = this.getDailyPlans();
         DailyPlan[] temp = new DailyPlan[5];
         int count = 0;
-        for(int i = 0; i < this.getDailyPlans().length; i++){
+        for (int i = 0; i < this.getDailyPlans().length; i++) {
             //a data tem de estar dentro estas duas datas
-            if(count == temp.length){
-                temp = (DailyPlan[])increaseArraySizeByFive(temp);
+            if (count == temp.length) {
+                temp = (DailyPlan[]) increaseArraySizeByFive(temp);
             }
-            if( !dailyPlan[i].getDate().isBefore(ldt) && !dailyPlan[i].getDate().isAfter(ldt1)){
+            if (!dailyPlan[i].getDate().isBefore(ldt) && !dailyPlan[i].getDate().isAfter(ldt1)) {
                 temp[count] = dailyPlan[i];
                 count++;
             }
         }
-        
+
         return temp;
     }
 
     /**
-     * 
+     *
      * @return o Daily Plan mais recente
-     * @throws DailyPlanException e lançada esta exceção caso não existem Daily plans
+     * @throws DailyPlanException e lançada esta exceção caso não existem Daily
+     * plans
      */
     @Override
     public DailyPlan getDailyPan() throws DailyPlanException {
         DailyPlan[] temp = this.getDailyPlans();
         DailyPlan dailyPlan = null;
         int count = 0;
-        
-        if(this.getDailyPlans().length == 0){
+
+        if (this.getDailyPlans().length == 0) {
             throw new DailyPlanException("Não existem DailyPlans");
         }
-        
-        for(int i = 0; i < this.getDailyPlans().length; i++){
-            if(count == 0){
+
+        for (int i = 0; i < this.getDailyPlans().length; i++) {
+            if (count == 0) {
                 dailyPlan = temp[i];
                 count++;
             }
-            if(temp[i].getDate().isAfter(dailyPlan.getDate())){
+            if (temp[i].getDate().isAfter(dailyPlan.getDate())) {
                 dailyPlan = temp[i];
             }
         }
-        
+
         return dailyPlan;
     }
 
@@ -174,18 +174,18 @@ public class FireDepartmentClass implements FireDepartment{
 
     @Override
     public boolean addClient(Client client) throws ClientException {
-        
+
         if (client == null) {
             throw new ClientException("The client is null.");
         }
-    
+
         // Verifica se o cliente já existe na coleção de clientes
         for (Client existingClient : clients) {
             if (existingClient.equals(client)) {
                 return false; // Cliente já existe
             }
         }
-    
+
         // Adiciona o cliente à coleção de clientes
         Client[] newClients = new Client[clients.length + 1];
         System.arraycopy(clients, 0, newClients, 0, clients.length);
@@ -197,11 +197,11 @@ public class FireDepartmentClass implements FireDepartment{
 
     @Override
     public boolean addService(Service srvc) throws ServiceException {
-        
+
         if (srvc == null) {
             throw new ServiceException("The service is null.");
         }
-    
+
         // Verifica se o serviço já existe na coleção de serviços
         for (Service existingService : services) {
             if (existingService.equals(srvc)) {
@@ -229,11 +229,10 @@ public class FireDepartmentClass implements FireDepartment{
                 break;
             }
         }
-           
+
         if (!pathologyExists) {
             throw new ServiceException("A patologia não existe.");
         }
-
 
         // Adiciona o serviço à coleção de serviços
         Service[] newServices = new Service[services.length + 1];
@@ -242,8 +241,8 @@ public class FireDepartmentClass implements FireDepartment{
         services = newServices;
 
         return true; // Serviço foi inserido com sucesso
-    }  
-    
+    }
+
     public static Object[] increaseArraySizeByFive(Object[] originalArray) {
         int newSize = originalArray.length + 5;
         Object[] newArray = new Object[newSize];

@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
  *
  * @author maraleite
  */
-public class ReportClass implements Report{
-    
+public class ReportImpl implements Report {
+
     private LocalDateTime date;
     private double totalDuration;
     private int numberOfServices;
@@ -23,7 +23,7 @@ public class ReportClass implements Report{
     private int numberOfClients;
     private int numberOfServicesPathology;
     private int numberOfServicesByPathology;
-    
+
     @Override
     public LocalDateTime getDate() {
         return date;
@@ -36,7 +36,7 @@ public class ReportClass implements Report{
 
     @Override
     public int getNumberOfServices(EmergencyType et) {
-         return numberOfServices;
+        return numberOfServices;
     }
 
     @Override
@@ -51,12 +51,12 @@ public class ReportClass implements Report{
 
     @Override
     public int getNumberOfServicesByPathology(Pathology pthlg) {
-         return numberOfServicesPathology;
+        return numberOfServicesPathology;
     }
 
     @Override
     public int getNumberOfServicesByPathology(PathologyType pt) {
         return numberOfServicesByPathology;
     }
-    
+
 }

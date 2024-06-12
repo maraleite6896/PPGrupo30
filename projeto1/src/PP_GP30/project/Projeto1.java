@@ -17,7 +17,7 @@ public class Projeto1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        AmbulanceClass ambulancia = new AmbulanceClass("23-23-aa",EmergencyType.EMERGENCY,2,3);
+        AmbulanceImpl ambulancia = new AmbulanceImpl("23-23-aa",EmergencyType.EMERGENCY,2,3);
         System.out.print(ambulancia.toString());
     }
     

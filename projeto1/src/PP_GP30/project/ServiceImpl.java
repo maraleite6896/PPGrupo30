@@ -13,14 +13,14 @@ import com.estg.core.Service;
  *
  * @author maraleite
  */
-public class ServiceClass implements Service{
-    
+public class ServiceImpl implements Service {
+
     private int numberOfService;
     private Client client;
     private Pathology pathologies[];
     private Destination destination;
-    
-    public ServiceClass(int numberOfService, Client client, Pathology[] pathologies, Destination destination) {
+
+    public ServiceImpl(int numberOfService, Client client, Pathology[] pathologies, Destination destination) {
         this.numberOfService = numberOfService;
         this.client = client;
         this.pathologies = pathologies;
@@ -39,12 +39,12 @@ public class ServiceClass implements Service{
 
     @Override
     public Pathology[] getPathologies() {
-       return pathologies;
+        return pathologies;
     }
 
     @Override
     public Destination getDestination() {
         return destination;
     }
-    
+
 }

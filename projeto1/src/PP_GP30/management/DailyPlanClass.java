@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
  *
  * @author maraleite
  */
-public class DailyPlanClass implements DailyPlan{
-    
+public class DailyPlanClass implements DailyPlan {
+
     private LocalDateTime date;
     private Route routes[];
-            
+
     @Override
     public LocalDateTime getDate() {
         return date;
@@ -26,5 +26,5 @@ public class DailyPlanClass implements DailyPlan{
     public Route[] getRoutes() {
         return routes;
     }
-    
+
 }

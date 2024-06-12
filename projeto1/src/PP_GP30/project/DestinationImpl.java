@@ -11,17 +11,17 @@ import com.estg.core.DestinationType;
  *
  * @author maraleite
  */
-public class DestinationClass implements Destination {
-    
+public class DestinationImpl implements Destination {
+
     private String code;
     private DestinationType destinationType;
     private String name;
-    private DurationToOtherDestinationsClass durationTableToOtherDestinations[];
+    private DurationToOtherDestinationsImpl durationTableToOtherDestinations[];
     private int durationToDestination;
     private double latitude;
     private double longitude;
-    
-    public DestinationClass(String code, DestinationType destinationType, String name, DurationToOtherDestinationsClass[] durationTableToOtherDestinations, int durationToDestination, double latitude, double longitude) {
+
+    public DestinationImpl(String code, DestinationType destinationType, String name, DurationToOtherDestinationsImpl[] durationTableToOtherDestinations, int durationToDestination, double latitude, double longitude) {
         this.code = code;
         this.destinationType = destinationType;
         this.name = name;
@@ -30,7 +30,6 @@ public class DestinationClass implements Destination {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
 
     @Override
     public String getCode() {
@@ -41,18 +40,20 @@ public class DestinationClass implements Destination {
     public DestinationType getDestinationType() {
         return destinationType;
     }
+
     @Override
     public String getName() {
         return name;
     }
 
     @Override
-    public DurationToOtherDestinationsClass[] getDurationTableToOtherDestinations() {
+    public DurationToOtherDestinationsImpl[] getDurationTableToOtherDestinations() {
         return durationTableToOtherDestinations;
     }
+
     @Override
     public int getDurationToDestination(Destination dstntn) {
-       return durationToDestination;
+        return durationToDestination;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class DestinationClass implements Destination {
 
     @Override
     public double getLongitude() {
-       return longitude;
+        return longitude;
     }
-    
+
 }

@@ -9,27 +9,26 @@ import com.estg.dailyManagement.Route;
 import com.estg.dailyManagement.RouteValidator;
 import com.estg.dailyManagement.Strategy;
 
-
 /**
  *
  * @author maraleite
  */
-public class RouteValidatorClass implements RouteValidator{
-    
+public class RouteValidatorImpl implements RouteValidator {
+
     private boolean validate;
 
     @Override
     public boolean validate(Route route, Service srvc, Strategy strtg) {
         Service[] s;
         s = route.getServices();
-       
-        for(int i = 0; i < route.getServices().length;i++){
-            if(s[i] == srvc){
+
+        for (int i = 0; i < route.getServices().length; i++) {
+            if (s[i] == srvc) {
                 validate = true;
             }
         }
-            
+
         validate = false;
         return validate;
-    }    
+    }
 }

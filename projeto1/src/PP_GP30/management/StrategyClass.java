@@ -32,9 +32,9 @@ public class StrategyClass implements Strategy{
                     if(rv.validate(temp[j], service[k], this)){
                         if(routes.length == count){
                             routes = (Route[]) increaseArraySizeByFive(routes);
-                            count++;
                         }
-                        
+                        routes[count] = temp[j];
+                        count++;
                     }
                 }
             }

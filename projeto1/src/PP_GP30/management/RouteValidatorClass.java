@@ -24,12 +24,12 @@ public class RouteValidatorClass implements RouteValidator{
         s = route.getServices();
        
         for(int i = 0; i < route.getServices().length;i++){
-            if(s[i] == srvc)
+            if(s[i] == srvc){
                 validate = true;
+            }
         }
             
         validate = false;
         return validate;
-    }
-    
+    }    
 }

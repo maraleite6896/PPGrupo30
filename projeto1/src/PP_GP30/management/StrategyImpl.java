@@ -1,7 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Nome: Mara Beatriz da Silva Leite
+* Número: 8210403
+* Turma: T3
+*
+* Nome: Sérgio Daniel Andrade Dias
+* Número: 8200535
+* Turma: T2
+*/
 package PP_GP30.management;
 
 import com.estg.core.FireDepartment;
@@ -12,8 +17,7 @@ import com.estg.dailyManagement.RouteValidator;
 import com.estg.dailyManagement.Strategy;
 
 /**
- *
- * @author maraleite
+ * The StrategyImpl class implements the Strategy interface and generates routes for a fire department based on a validation strategy.
  */
 public class StrategyImpl implements Strategy {
 

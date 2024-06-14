@@ -1,7 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Nome: Mara Beatriz da Silva Leite
+* Número: 8210403
+* Turma: T3
+*
+* Nome: Sérgio Daniel Andrade Dias
+* Número: 8200535
+* Turma: T2
+*/
 package PP_GP30.management;
 
 import com.estg.core.Ambulance;
@@ -16,20 +21,21 @@ import com.estg.dailyManagement.RouteValidator;
 import com.estg.dailyManagement.Strategy;
 
 /**
- *
- * @author maraleite
+ * The RouteGeneratorImpl class implements the RouteGenerator interface and generates routes for a fire department.
  */
 public class RouteGeneratorImpl implements RouteGenerator {
 
+    //The array of generated routes.
     private Route generateRoute[];
 
     /**
-     *
-     * @param fd firedepartment a ser analisado
-     * @param strtg estratégia a ser seguida
-     * @param rv validação das rotas tendo em conta as restições
-     * @param report
-     * @return a lista de rotas
+     * Generates routes for the given fire department, strategy, route validator, and report.
+     * 
+     * @param fd the fire department to be analyzed
+     * @param strtg the strategy to be followed
+     * @param rv the route validator considering the restrictions
+     * @param report the report
+     * @return the list of routes
      */
     @Override
     public Route[] generateRoute(FireDepartment fd, Strategy strtg, RouteValidator rv, Report report) {
@@ -45,29 +51,29 @@ public class RouteGeneratorImpl implements RouteGenerator {
         if (generateRoute.length == count) {
             generateRoute = (Route[]) increaseArraySizeByFive(generateRoute);
         }
-        //ter atenção ao tipo de patologia(urgente ou não urgente)
+        
         Ambulance[] ambulance = fd.getAmbulances();
         Service[] services = fd.getServices();
-        //perceber se todos os serviços do quartel ou só alguns
+        
         for (int i = 0; i < fd.getServices().length; i++) {
             Pathology[] pathology = services[i].getPathologies();
             EmergencyType[] emergencyType = new EmergencyType[0];
             EmergencyType[] nonEmergencyType = new EmergencyType[0];
             int countEmergency = 0, countNonEmergency = 0;
             for (int j = 0; j < services[i].getPathologies().length; j++) {
-                if (pathology[j].getEmergenceType() == EmergencyType.EMERGENCY) {
+                if (pathology[j].getEmergencyType() == EmergencyType.EMERGENCY) {
                     if (emergencyType.length == countEmergency) {
                         emergencyType = (EmergencyType[]) increaseArraySizeByFive(emergencyType);
                     }
 
-                    emergencyType[countEmergency] = pathology[j].getEmergenceType();
+                    emergencyType[countEmergency] = pathology[j].getEmergencyType();
                     countEmergency++;
-                } else if (pathology[j].getEmergenceType() == EmergencyType.NON_EMERGENCY) {
+                } else if (pathology[j].getEmergencyType() == EmergencyType.NON_EMERGENCY) {
                     if (nonEmergencyType.length == countNonEmergency) {
                         nonEmergencyType = (EmergencyType[]) increaseArraySizeByFive(nonEmergencyType);
                     }
 
-                    nonEmergencyType[countNonEmergency] = pathology[j].getEmergenceType();
+                    nonEmergencyType[countNonEmergency] = pathology[j].getEmergencyType();
                     countNonEmergency++;
                 }
             }
@@ -83,9 +89,10 @@ public class RouteGeneratorImpl implements RouteGenerator {
     }
 
     /**
-     *
-     * @param originalArray array a ser aumentado
-     * @return retorna o novo array com mais 5 espaços livres
+     * Increases the size of the given array by 5.
+     * 
+     * @param originalArray the array to be increased
+     * @return the new array with 5 more free spaces
      */
     public static Object[] increaseArraySizeByFive(Object[] originalArray) {
         int newSize = originalArray.length + 5;

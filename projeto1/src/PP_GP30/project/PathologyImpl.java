@@ -1,7 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Nome: Mara Beatriz da Silva Leite
+* Número: 8210403
+* Turma: T3
+*
+* Nome: Sérgio Daniel Andrade Dias
+* Número: 8200535
+* Turma: T2
+*/
 package PP_GP30.project;
 
 import com.estg.core.EmergencyType;
@@ -9,27 +14,46 @@ import com.estg.core.Pathology;
 import com.estg.core.PathologyType;
 
 /**
- *
- * @author maraleite
+ * The PathologyImpl class implements the Pathology interface and represents a pathology.
+ * It has two private fields: pathologyType and emergencyType.
  */
 public class PathologyImpl implements Pathology {
 
+    //The type of pathology.
     private PathologyType pathologyType;
-    private EmergencyType emergenceType;
 
-    public PathologyImpl(PathologyType pathologyType, EmergencyType emergenceType) {
+    //The type of emergency.
+    private EmergencyType emergencyType;
+
+    /**
+     * Constructs a PathologyImpl object with the given pathology type and emergency type.
+     * 
+     * @param pathologyType the type of pathology
+     * @param emergencyType the type of emergency
+     */
+    public PathologyImpl(PathologyType pathologyType, EmergencyType emergencyType) {
         this.pathologyType = pathologyType;
-        this.emergenceType = emergenceType;
+        this.emergencyType = emergencyType;
     }
 
+    /**
+     * Returns the type of pathology.
+     * 
+     * @return the type of pathology
+     */
     @Override
     public PathologyType getPathologyType() {
         return this.pathologyType;
     }
 
+    /**
+     * Returns the type of emergency.
+     * 
+     * @return the type of emergency
+     */
     @Override
-    public EmergencyType getEmergenceType() {
-        return this.emergenceType;
+    public EmergencyType getEmergencyType() {
+        return this.emergencyType;
     }
 
 }

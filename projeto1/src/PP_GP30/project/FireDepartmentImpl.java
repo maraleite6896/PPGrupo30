@@ -1,7 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Nome: Mara Beatriz da Silva Leite
+* Número: 8210403
+* Turma: T3
+*
+* Nome: Sérgio Daniel Andrade Dias
+* Número: 8200535
+* Turma: T2
+*/
 package PP_GP30.project;
 
 import com.estg.core.Ambulance;
@@ -17,22 +22,49 @@ import com.estg.dailyManagement.exceptions.DailyPlanException;
 import java.time.LocalDateTime;
 
 /**
- *
- * @author maraleite
+ * The FireDepartmentImpl class implements the FireDepartment interface and represents a fire department.
+ * It has several private fields: name, clients, services, ambulances, dailyPlans, and flags for adding daily plans, clients, and services.
  */
 public class FireDepartmentImpl implements FireDepartment {
 
+    //The name of the fire department.
     private String name;
+
+    //An array of clients associated with the fire department.
     private Client clients[];
+
+    //An array of services provided by the fire department.
     private Service services[];
+
+    //An array of ambulances available at the fire department.
     private Ambulance ambulances[];
+
+    //A flag indicating whether an ambulance can be added.
     private boolean ambulance;
+    
+    //An array of daily plans for the fire department.
     private DailyPlan dailyPlans[];
+    
+    //The most recent daily plan.
     private DailyPlan dailyPan;
+    
+    //A flag indicating whether a daily plan can be added.
     private boolean addDailyPlan;
+    
+    //A flag indicating whether a client can be added.
     private boolean addClient;
+    
+    //A flag indicating whether a service can be added.
     private boolean addService;
 
+    /**
+     * Initializes an instance of the FireDepartmentImpl class with the provided parameters.
+     * 
+     * @param name The name of the fire department.
+     * @param clients An array of clients associated with the fire department.
+     * @param services An array of services provided by the fire department.
+     * @param ambulances An array of ambulances available at the fire department.
+     */
     public FireDepartmentImpl(String name, Client[] clients, Service[] services, Ambulance[] ambulances) {
         this.name = name;
         this.clients = clients;
@@ -40,26 +72,53 @@ public class FireDepartmentImpl implements FireDepartment {
         this.ambulances = ambulances;
     }
 
+    /**
+     * Returns the name of the fire department.
+     * 
+     * @return The name of the fire department.
+     */
     @Override
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Returns an array of clients associated with the fire department.
+     * 
+     * @return An array of clients associated with the fire department.
+     */
     @Override
     public Client[] getClients() {
         return this.clients;
     }
 
+    /**
+     * Returns an array of services provided by the fire department.
+     * 
+     * @return An array of services provided by the fire department.
+     */
     @Override
     public Service[] getServices() {
         return this.services;
     }
 
+    /**
+     * Returns an array of ambulances available at the fire department.
+     * 
+     * @return An array of ambulances available at the fire department.
+     */
     @Override
     public Ambulance[] getAmbulances() {
         return this.ambulances;
     }
 
+    /**
+     * Adds an ambulance to the fire department.
+     * 
+     * @param amblnc The ambulance to be added.
+     * @return True if the ambulance was added successfully, false otherwise.
+     * @throws AmbulanceException If the ambulance is null or already exists.
+     */
     @Override
     public boolean addAmbulance(Ambulance amblnc) throws AmbulanceException {
 
@@ -69,32 +128,35 @@ public class FireDepartmentImpl implements FireDepartment {
 
         for (Ambulance existingAmbulance : ambulances) {
             if (existingAmbulance.equals(amblnc)) {
-                return false; // Ambulance already exists
+                return false;
             }
         }
 
-        // Add the ambulance to the collection of ambulances
         Ambulance[] newAmbulances = new Ambulance[ambulances.length + 1];
         System.arraycopy(ambulances, 0, newAmbulances, 0, ambulances.length);
         newAmbulances[ambulances.length] = amblnc;
         ambulances = newAmbulances;
 
-        return true; // Ambulance was inserted successfully
+        return true;
 
     }
 
+    /**
+     * Returns an array of daily plans for the fire department.
+     * 
+     * @return An array of daily plans for the fire department.
+     */
     @Override
     public DailyPlan[] getDailyPlans() {
         return dailyPlans;
     }
 
     /**
-     *
-     * @param ldt data de inicio
-     * @param ldt1 data do fim
-     * @return em caso de sucesso retorna a lista de daily plans que existem
-     * entre as duas datas, caso as datas não consistem num intervalo de tempo
-     * válido retona null
+     * Returns an array of daily plans for the fire department within a specified date range.
+     * 
+     * @param ldt The start date.
+     * @param ldt1 The end date.
+     * @return An array of daily plans for the fire department within the specified date range.
      */
     @Override
     public DailyPlan[] getDailyPlans(LocalDateTime ldt, LocalDateTime ldt1) {
@@ -108,7 +170,7 @@ public class FireDepartmentImpl implements FireDepartment {
         DailyPlan[] temp = new DailyPlan[5];
         int count = 0;
         for (int i = 0; i < this.getDailyPlans().length; i++) {
-            //a data tem de estar dentro estas duas datas
+            
             if (count == temp.length) {
                 temp = (DailyPlan[]) increaseArraySizeByFive(temp);
             }
@@ -122,10 +184,10 @@ public class FireDepartmentImpl implements FireDepartment {
     }
 
     /**
-     *
-     * @return o Daily Plan mais recente
-     * @throws DailyPlanException e lançada esta exceção caso não existem Daily
-     * plans
+     * Returns the most recent daily plan.
+     * 
+     * @return The most recent daily plan.
+     * @throws DailyPlanException If no daily plans exist.
      */
     @Override
     public DailyPlan getDailyPan() throws DailyPlanException {
@@ -150,28 +212,42 @@ public class FireDepartmentImpl implements FireDepartment {
         return dailyPlan;
     }
 
+    /**
+     * Adds a daily plan to the fire department.
+     * 
+     * @param dp The daily plan to be added.
+     * @return True if the daily plan was added successfully, false otherwise.
+     * @throws DailyPlanException If the daily plan is null or already exists.
+     */
     @Override
     public boolean addDailyPlan(DailyPlan dp) throws DailyPlanException {
         if (dailyPlans == null || dp.getDate().isBefore(this.getDailyPan().getDate())) {
             throw new DailyPlanException("The daily plan is null.");
         }
 
-        // Verifica se o plano diário já existe na coleção de planos diários
+        
         for (DailyPlan existingPlan : dailyPlans) {
             if (existingPlan.equals(dp)) {
                 return false; // Plano diário já existe
             }
         }
 
-        // Adiciona o plano diário à coleção de planos diários
+        
         DailyPlan[] newDailyPlans = new DailyPlan[dailyPlans.length + 1];
         System.arraycopy(dailyPlans, 0, newDailyPlans, 0, dailyPlans.length);
         newDailyPlans[dailyPlans.length] = dp;
         dailyPlans = newDailyPlans;
 
-        return true; // Plano diário introduzido  
+        return true;
     }
 
+    /**
+     * Adds a client to the fire department.
+     * 
+     * @param client The client to be added.
+     * @return True if the client was added successfully, false otherwise.
+     * @throws ClientException If the client is null or already exists.
+     */
     @Override
     public boolean addClient(Client client) throws ClientException {
 
@@ -179,22 +255,29 @@ public class FireDepartmentImpl implements FireDepartment {
             throw new ClientException("The client is null.");
         }
 
-        // Verifica se o cliente já existe na coleção de clientes
+        
         for (Client existingClient : clients) {
             if (existingClient.equals(client)) {
-                return false; // Cliente já existe
+                return false;
             }
         }
 
-        // Adiciona o cliente à coleção de clientes
+        
         Client[] newClients = new Client[clients.length + 1];
         System.arraycopy(clients, 0, newClients, 0, clients.length);
         newClients[clients.length] = client;
         clients = newClients;
 
-        return true; // Cliente foi inserido com sucesso
+        return true;
     }
 
+    /**
+     * Adds a service to the fire department.
+     * 
+     * @param srvc The service to be added.
+     * @return True if the service was added successfully, false otherwise.
+     * @throws ServiceException If the service is null, the associated client does not exist, or the associated pathology does not exist.
+     */
     @Override
     public boolean addService(Service srvc) throws ServiceException {
 
@@ -202,14 +285,14 @@ public class FireDepartmentImpl implements FireDepartment {
             throw new ServiceException("The service is null.");
         }
 
-        // Verifica se o serviço já existe na coleção de serviços
+        
         for (Service existingService : services) {
             if (existingService.equals(srvc)) {
-                return false; // Serviço já existe
+                return false;
             }
         }
 
-        // Verifica se o cliente associado ao serviço existe
+        
         boolean clientExists = false;
         for (Client existingClient : clients) {
             if (existingClient.equals(srvc.getClient())) {
@@ -221,7 +304,7 @@ public class FireDepartmentImpl implements FireDepartment {
             throw new ServiceException("The client associated with the service does not exist.");
         }
 
-        // Verifica se as patologias associadas ao serviço existem
+        
         boolean pathologyExists = false;
         for (Pathology servicePathology : srvc.getPathologies()) {
             if (servicePathology != null) {
@@ -234,15 +317,21 @@ public class FireDepartmentImpl implements FireDepartment {
             throw new ServiceException("A patologia não existe.");
         }
 
-        // Adiciona o serviço à coleção de serviços
+        
         Service[] newServices = new Service[services.length + 1];
         System.arraycopy(services, 0, newServices, 0, services.length);
         newServices[services.length] = srvc;
         services = newServices;
 
-        return true; // Serviço foi inserido com sucesso
+        return true;
     }
 
+    /**
+     * Increases the size of an array by five elements.
+     * 
+     * @param originalArray The original array.
+     * @return The resized array.
+     */
     public static Object[] increaseArraySizeByFive(Object[] originalArray) {
         int newSize = originalArray.length + 5;
         Object[] newArray = new Object[newSize];

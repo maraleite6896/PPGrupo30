@@ -18,11 +18,13 @@ import com.estg.core.PathologyType;
  * pathology. It has two private fields: pathologyType and emergencyType.
  */
 public class PathologyImpl implements Pathology {
-
-    //The type of pathology.
+    /**
+     * The type of pathology.
+     */
     private PathologyType pathologyType;
-
-    //The type of emergency.
+    /**
+     * The type of emergency.
+     */
     private EmergencyType emergencyType;
 
     /**

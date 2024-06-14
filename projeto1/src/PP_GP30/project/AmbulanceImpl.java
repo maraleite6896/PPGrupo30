@@ -18,17 +18,21 @@ import com.estg.core.EmergencyType;
  * It has four private fields: plate, maxPassengers, maxUrgents, and ambulanceType, which are initialized through the constructor.
  */
 public class AmbulanceImpl implements Ambulance {
-
-    //The license plate number of the ambulance.
+    /**
+     * The license plate number of the ambulance.
+     */
     private String plate;
-    
-    //The maximum number of passengers the ambulance can carry.
+    /**
+     * The maximum number of passengers the ambulance can carry.
+     */
     private int maxPassengers;
-
-    //The maximum number of urgent cases the ambulance can handle.
+    /**
+     * The maximum number of urgent cases the ambulance can handle.
+     */
     private int maxUrgents;
-
-    //The type of emergency the ambulance is designed to handle.
+    /**
+     * The type of emergency the ambulance is designed to handle.
+     */
     private EmergencyType ambulanceType;
 
     /**

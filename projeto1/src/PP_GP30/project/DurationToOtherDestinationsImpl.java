@@ -16,11 +16,13 @@ import com.estg.core.DurationToOtherDestinations;
  * It has two private fields: id and duration, which are initialized through the constructor.
  */
 public class DurationToOtherDestinationsImpl implements DurationToOtherDestinations {
-
-    //The unique identifier of the duration to another destination.
+    /**
+     * The unique identifier of the duration to another destination.
+     */
     private int id;
-
-    //The duration to another destination in minutes.
+    /**
+     * The unique identifier of the duration to another destination.
+     */
     private int duration;
 
     /**

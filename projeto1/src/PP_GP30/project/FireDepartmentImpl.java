@@ -28,35 +28,45 @@ import java.time.LocalDateTime;
  * and services.
  */
 public class FireDepartmentImpl implements FireDepartment {
-
-    //The name of the fire department.
+    /**
+     * The name of the fire department.
+     */
     private String name;
-
-    //An array of clients associated with the fire department.
+    /**
+     * An array of clients associated with the fire department.
+     */
     private Client clients[];
-
-    //An array of services provided by the fire department.
+    /**
+     * An array of services provided by the fire department.
+     */
     private Service services[];
-
-    //An array of ambulances available at the fire department.
+    /**
+     * An array of ambulances available at the fire department.
+     */
     private Ambulance ambulances[];
-
-    //A flag indicating whether an ambulance can be added.
+    /**
+     * A flag indicating whether an ambulance can be added.
+     */
     private boolean ambulance;
-
-    //An array of daily plans for the fire department.
+    /**
+     * An array of daily plans for the fire department.
+     */
     private DailyPlan dailyPlans[];
-
-    //The most recent daily plan.
+    /**
+     * The most recent daily plan.
+     */
     private DailyPlan dailyPan;
-
-    //A flag indicating whether a daily plan can be added.
+    /**
+     * A flag indicating whether a daily plan can be added.
+     */
     private boolean addDailyPlan;
-
-    //A flag indicating whether a client can be added.
+    /**
+     * A flag indicating whether a client can be added.
+     */
     private boolean addClient;
-
-    //A flag indicating whether a service can be added.
+    /**
+     * A flag indicating whether a service can be added.
+     */
     private boolean addService;
 
     /**

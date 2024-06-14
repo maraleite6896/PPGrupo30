@@ -19,8 +19,9 @@ import com.estg.dailyManagement.Strategy;
  * The RouteValidatorImpl class implements the RouteValidator interface and validates if a service can be added to a route.
  */
 public class RouteValidatorImpl implements RouteValidator {
-
-    //The flag indicating whether the service can be added to the route.
+    /**
+     * The flag indicating whether the service can be added to the route.
+     */
     private boolean validate;
 
     /**

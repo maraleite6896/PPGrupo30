@@ -18,26 +18,33 @@ import com.estg.core.DestinationType;
  * which are initialized through the constructor.
  */
 public class DestinationImpl implements Destination {
-
-    //The unique code of the destination.
+    /**
+     * The unique code of the destination.
+     */
     private String code;
-
-    //The type of the destination (e.g. hospital, clinic, etc.).
+    /**
+     * The type of the destination (e.g. hospital, clinic, etc.).
+     */
     private DestinationType destinationType;
-
-    //The name of the destination.
+    /**
+     * The name of the destination.
+     */
     private String name;
-
-    //A table of durations to other destinations.
+    /**
+     * A table of durations to other destinations.
+     */
     private DurationToOtherDestinationsImpl durationTableToOtherDestinations[];
-
-    //The duration to this destination.
+    /**
+     * The duration to this destination.
+     */
     private int durationToDestination;
-
-    //The latitude of the destination.
+    /**
+     * The latitude of the destination.
+     */
     private double latitude;
-
-    //The longitude of the destination.
+    /**
+     * The longitude of the destination.
+     */
     private double longitude;
 
     /**

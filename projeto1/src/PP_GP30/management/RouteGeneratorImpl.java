@@ -24,8 +24,9 @@ import com.estg.dailyManagement.Strategy;
  * The RouteGeneratorImpl class implements the RouteGenerator interface and generates routes for a fire department.
  */
 public class RouteGeneratorImpl implements RouteGenerator {
-
-    //The array of generated routes.
+    /**
+     * The array of generated routes.
+     */
     private Route generateRoute[];
 
     /**

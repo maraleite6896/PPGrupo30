@@ -21,17 +21,21 @@ import java.util.Objects;
  * and destination.
  */
 public class ServiceImpl implements Service {
-
-    //The number of services.
+    /**
+     * The number of services.
+     */
     private int numberOfService;
-
-    //The client associated with the service.
+    /**
+     * The client associated with the service.
+     */
     private Client client;
-
-    //An array of pathologies associated with the service.
+    /**
+     * An array of pathologies associated with the service.
+     */
     private Pathology pathologies[];
-
-    //The destination of the service.
+    /**
+     * The destination of the service.
+     */
     private Destination destination;
 
     /**

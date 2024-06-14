@@ -18,11 +18,13 @@ import java.time.LocalDateTime;
  * It has two private fields: date and routes.
  */
 public class DailyPlanClass implements DailyPlan {
-
-    //The date of the daily plan.
+    /**
+     * The date of the daily plan.
+     */
     private LocalDateTime date;
-    
-    //An array of routes in the daily plan.
+    /**
+     * An array of routes in the daily plan.
+     */
     private Route routes[];
 
     /**

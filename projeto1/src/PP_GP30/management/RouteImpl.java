@@ -21,26 +21,33 @@ import java.time.LocalDateTime;
  * an ambulance.
  */
 public class RouteImpl implements Route {
-
-    //The code of the route.
+    /**
+     * The code of the route.
+     */
     private String code;
-
-    //The ambulance assigned to the route.
+    /**
+     * The ambulance assigned to the route.
+     */
     private Ambulance ambulance;
-
-    //The start date and time of the route.
+    /**
+     * The start date and time of the route.
+     */
     private LocalDateTime startDate;
-
-    //The end date and time of the route.
+    /**
+     * The end date and time of the route.
+     */
     private LocalDateTime endDate;
-
-    //The services assigned to the route.
+    /**
+     * The services assigned to the route.
+     */
     private Service services[];
-
-    //A flag indicating whether the route contains services.
+    /**
+     * A flag indicating whether the route contains services.
+     */
     private boolean containsService;
-
-    //The total duration of the route.
+    /**
+     * The total duration of the route.
+     */
     private double totalDuration;
 
     private static int serviceCount = 0;

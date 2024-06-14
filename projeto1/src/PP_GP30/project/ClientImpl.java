@@ -19,17 +19,21 @@ import java.time.LocalDate;
  * It has four private fields: name, gender, niss, and birthDate, which are initialized through the constructor.
  */
 public class ClientImpl implements Client {
-
-    //The name of the client.
+    /**
+     * The name of the client.
+     */
     private String name;
-
-    //The gender of the client.
+    /**
+     * The gender of the client.
+     */
     private Gender gender;
-
-    //The NISS of the client.
+    /**
+     * The NISS of the client.
+     */
     private int niss;
-
-    //The birth date of the client.
+    /**
+     * The birth date of the client.
+     */
     private LocalDate birthDate;
 
     /**

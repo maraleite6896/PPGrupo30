@@ -21,26 +21,33 @@ import java.time.LocalDateTime;
  * numberOfServicesPathology, and numberOfServicesByPathology.
  */
 public class ReportImpl implements Report {
-
-    //The date of the report.
+    /**
+     * The date of the report.
+     */
     private LocalDateTime date;
-
-    //The total duration of the report.
+    /**
+     * The total duration of the report.
+     */
     private double totalDuration;
-
-    //The number of services in the report.
+    /**
+     * The number of services in the report.
+     */
     private int numberOfServices;
-    
-    //The number of routes in the report.
+    /**
+     * The number of routes in the report.
+     */
     private int numberOfRoutes;
-
-    //The number of clients in the report.
+    /**
+     * The number of clients in the report.
+     */
     private int numberOfClients;
-
-    //The number of services by pathology in the report.
+    /**
+     * The number of services by pathology in the report.
+     */
     private int numberOfServicesPathology;
-
-    //The number of services by pathology type in the report.
+    /**
+     * The number of services by pathology type in the report.
+     */
     private int numberOfServicesByPathology;
 
     /**

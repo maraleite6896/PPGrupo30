@@ -6,7 +6,7 @@
 * Nome: Sérgio Daniel Andrade Dias
 * Número: 8200535
 * Turma: T2
-*/
+ */
 package PP_GP30.management;
 
 import com.estg.core.FireDepartment;
@@ -17,7 +17,8 @@ import com.estg.dailyManagement.RouteValidator;
 import com.estg.dailyManagement.Strategy;
 
 /**
- * The StrategyImpl class implements the Strategy interface and generates routes for a fire department based on a validation strategy.
+ * The StrategyImpl class implements the Strategy interface and generates routes
+ * for a fire department based on a validation strategy.
  */
 public class StrategyImpl implements Strategy {
 
@@ -45,10 +46,18 @@ public class StrategyImpl implements Strategy {
         return routes;
     }
 
+    /**
+     * Increases the size of the given array by 5.
+     *
+     * @param originalArray the array to be increased
+     * @return the new array with 5 more free spaces
+     */
     public static Object[] increaseArraySizeByFive(Object[] originalArray) {
         int newSize = originalArray.length + 5;
         Object[] newArray = new Object[newSize];
-        System.arraycopy(originalArray, 0, newArray, 0, originalArray.length);
+        for (int i = 0; i < originalArray.length; i++) {
+            newArray[i] = originalArray[i];
+        }
 
         return newArray;
     }

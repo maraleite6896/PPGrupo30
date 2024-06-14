@@ -6,7 +6,7 @@
 * Nome: Sérgio Daniel Andrade Dias
 * Número: 8200535
 * Turma: T2
-*/
+ */
 package PP_GP30.project;
 
 import com.estg.core.EmergencyType;
@@ -14,8 +14,8 @@ import com.estg.core.Pathology;
 import com.estg.core.PathologyType;
 
 /**
- * The PathologyImpl class implements the Pathology interface and represents a pathology.
- * It has two private fields: pathologyType and emergencyType.
+ * The PathologyImpl class implements the Pathology interface and represents a
+ * pathology. It has two private fields: pathologyType and emergencyType.
  */
 public class PathologyImpl implements Pathology {
 
@@ -26,8 +26,9 @@ public class PathologyImpl implements Pathology {
     private EmergencyType emergencyType;
 
     /**
-     * Constructs a PathologyImpl object with the given pathology type and emergency type.
-     * 
+     * Constructs a PathologyImpl object with the given pathology type and
+     * emergency type.
+     *
      * @param pathologyType the type of pathology
      * @param emergencyType the type of emergency
      */
@@ -38,7 +39,7 @@ public class PathologyImpl implements Pathology {
 
     /**
      * Returns the type of pathology.
-     * 
+     *
      * @return the type of pathology
      */
     @Override
@@ -48,11 +49,12 @@ public class PathologyImpl implements Pathology {
 
     /**
      * Returns the type of emergency.
-     * 
+     *
      * @return the type of emergency
      */
     @Override
-    public EmergencyType getEmergencyType() {
+    public EmergencyType getEmergenceType() {
+
         return this.emergencyType;
     }
 

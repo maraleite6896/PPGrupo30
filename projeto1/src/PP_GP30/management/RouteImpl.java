@@ -6,7 +6,7 @@
 * Nome: Sérgio Daniel Andrade Dias
 * Número: 8200535
 * Turma: T2
-*/
+ */
 package PP_GP30.management;
 
 import com.estg.core.Ambulance;
@@ -17,34 +17,38 @@ import com.estg.dailyManagement.exceptions.RouteException;
 import java.time.LocalDateTime;
 
 /**
- * The RouteImpl class implements the Route interface and represents a route for an ambulance.
+ * The RouteImpl class implements the Route interface and represents a route for
+ * an ambulance.
  */
 public class RouteImpl implements Route {
 
     //The code of the route.
     private String code;
-    
+
     //The ambulance assigned to the route.
     private Ambulance ambulance;
-    
+
     //The start date and time of the route.
     private LocalDateTime startDate;
-    
+
     //The end date and time of the route.
     private LocalDateTime endDate;
-    
+
     //The services assigned to the route.
     private Service services[];
-    
+
     //A flag indicating whether the route contains services.
     private boolean containsService;
-    
+
     //The total duration of the route.
     private double totalDuration;
 
+    private static int serviceCount = 0;
+
     /**
-     * Constructs a RouteImpl object with the given code, ambulance, and start date.
-     * 
+     * Constructs a RouteImpl object with the given code, ambulance, and start
+     * date.
+     *
      * @param code the code of the route
      * @param ambulance the ambulance assigned to the route
      * @param startDate the start date and time of the route
@@ -60,7 +64,7 @@ public class RouteImpl implements Route {
 
     /**
      * Returns the code of the route.
-     * 
+     *
      * @return the code of the route
      */
     @Override
@@ -70,7 +74,7 @@ public class RouteImpl implements Route {
 
     /**
      * Returns the ambulance assigned to the route.
-     * 
+     *
      * @return the ambulance assigned to the route
      */
     @Override
@@ -80,7 +84,7 @@ public class RouteImpl implements Route {
 
     /**
      * Returns the start date and time of the route.
-     * 
+     *
      * @return the start date and time of the route
      */
     @Override
@@ -90,7 +94,7 @@ public class RouteImpl implements Route {
 
     /**
      * Returns the end date and time of the route.
-     * 
+     *
      * @return the end date and time of the route
      */
     @Override
@@ -100,7 +104,7 @@ public class RouteImpl implements Route {
 
     /**
      * Returns the services assigned to the route.
-     * 
+     *
      * @return the services assigned to the route
      */
     @Override
@@ -110,9 +114,10 @@ public class RouteImpl implements Route {
 
     /**
      * Adds a service to the route.
-     * 
+     *
      * @param srvc the service to be added
-     * @throws RouteException if the service is null, already exists in the route, or is not compatible with the ambulance
+     * @throws RouteException if the service is null, already exists in the
+     * route, or is not compatible with the ambulance
      */
     @Override
     public void addService(Service srvc) throws RouteException {
@@ -131,26 +136,28 @@ public class RouteImpl implements Route {
             throw new RouteException("O serviço não é compatível com a ambulância da rota.");
         }
 
-        
-        Service[] newServices = new Service[services.length + 1];
-        System.arraycopy(services, 0, newServices, 0, services.length);
-        newServices[services.length] = srvc;
-        services = newServices;
+        if (serviceCount == this.services.length) {
+            increaseArraySizeByFive(this.services);
+
+        } else {
+            this.services[serviceCount] = srvc;
+            serviceCount++;
+        }
 
         containsService = true;
     }
 
     /**
      * Checks if a service is compatible with the ambulance.
-     * 
+     *
      * @param service the service to be checked
      * @return true if the service is compatible, false otherwise
      */
     private boolean isServiceCompatible(Service service) {
-        
+
         Pathology[] patology = service.getPathologies();
         for (int i = 0; i < service.getPathologies().length; i++) {
-            if (this.getAmbulance().getAmbulanceType() != patology[i].getEmergencyType()) {
+            if (this.getAmbulance().getAmbulanceType() != patology[i].getEmergenceType()) {
                 return false;
             }
         }
@@ -159,7 +166,7 @@ public class RouteImpl implements Route {
 
     /**
      * Checks if a service exists in the route.
-     * 
+     *
      * @param srvc the service to be checked
      * @return true if the service exists, false otherwise
      */
@@ -176,10 +183,11 @@ public class RouteImpl implements Route {
 
     /**
      * Removes a service from the route.
-     * 
+     *
      * @param srvc the service to be removed
      * @return the removed service
-     * @throws RouteException if the service is null or does not exist in the route
+     * @throws RouteException if the service is null or does not exist in the
+     * route
      */
     @Override
     public Service removeService(Service srvc) throws RouteException {
@@ -208,22 +216,28 @@ public class RouteImpl implements Route {
         Service removedService = services[index];
 
         // Remover o serviço da lista de serviços da rota
-        Service[] newServices = new Service[services.length - 1];
+        if (index == services.length) {
+            this.services[index] = null;
+        } else {
+            for (int i = index; i < services.length - (index - 1); i++) {
+                services[i] = services[i + 1];
 
-        if (index < services.length - 1) {
-            System.arraycopy(services, index + 1, newServices, index, services.length - index - 1);
+            }
+            this.services[services.length] = null;
+
         }
-        services = newServices;
+        serviceCount--;
 
         return removedService;
     }
 
     /**
      * Replaces a service in the route with a new one.
-     * 
+     *
      * @param oldService the service to be replaced
      * @param newService the new service
-     * @throws RouteException if the services are null, the old service does not exist, or the new service is not compatible with the ambulance
+     * @throws RouteException if the services are null, the old service does not
+     * exist, or the new service is not compatible with the ambulance
      */
     @Override
     public void replaceService(Service oldService, Service newService) throws RouteException {
@@ -261,10 +275,11 @@ public class RouteImpl implements Route {
 
     /**
      * Inserts a new service after an existing service in the route.
-     * 
+     *
      * @param oldService the existing service
      * @param newService the new service
-     * @throws RouteException if the services are null, the old service does not exist, or the new service is not compatible with the ambulance
+     * @throws RouteException if the services are null, the old service does not
+     * exist, or the new service is not compatible with the ambulance
      */
     @Override
     public void insertAfter(Service oldService, Service newService) throws RouteException {
@@ -298,19 +313,41 @@ public class RouteImpl implements Route {
         }
 
         Service[] newServices = new Service[services.length + 1];
-        System.arraycopy(services, 0, newServices, 0, index + 1);
+        for (int i = 0; i < this.services.length; i++) {
+            newServices[i] = this.services[i];
+        }
         newServices[index + 1] = newService;
-        System.arraycopy(services, index + 1, newServices, index + 2, services.length - (index + 1));
+
+        for (int i = index + 1; i < this.services.length - (index + 1); i++) {
+            newServices[i + 1] = services[i];
+        }
         services = newServices;
     }
 
     /**
-    * Returns the total duration of the route.
-     * 
+     * Returns the total duration of the route.
+     *
      * @return the total duration of the route
      */
     @Override
     public double getTotalDuration() {
-        return totalDuration;
+        return this.totalDuration;
     }
+
+    /**
+     * Increases the size of the given array by 5.
+     *
+     * @param originalArray the array to be increased
+     * @return the new array with 5 more free spaces
+     */
+    public static Object[] increaseArraySizeByFive(Object[] originalArray) {
+        int newSize = originalArray.length + 5;
+        Object[] newArray = new Object[newSize];
+        for (int i = 0; i < originalArray.length; i++) {
+            newArray[i] = originalArray[i];
+        }
+
+        return newArray;
+    }
+
 }

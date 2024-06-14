@@ -61,19 +61,19 @@ public class RouteGeneratorImpl implements RouteGenerator {
             EmergencyType[] nonEmergencyType = new EmergencyType[0];
             int countEmergency = 0, countNonEmergency = 0;
             for (int j = 0; j < services[i].getPathologies().length; j++) {
-                if (pathology[j].getEmergencyType() == EmergencyType.EMERGENCY) {
+                if (pathology[j].getEmergenceType()== EmergencyType.EMERGENCY) {
                     if (emergencyType.length == countEmergency) {
                         emergencyType = (EmergencyType[]) increaseArraySizeByFive(emergencyType);
                     }
 
-                    emergencyType[countEmergency] = pathology[j].getEmergencyType();
+                    emergencyType[countEmergency] = pathology[j].getEmergenceType();
                     countEmergency++;
-                } else if (pathology[j].getEmergencyType() == EmergencyType.NON_EMERGENCY) {
+                } else if (pathology[j].getEmergenceType() == EmergencyType.NON_EMERGENCY) {
                     if (nonEmergencyType.length == countNonEmergency) {
                         nonEmergencyType = (EmergencyType[]) increaseArraySizeByFive(nonEmergencyType);
                     }
 
-                    nonEmergencyType[countNonEmergency] = pathology[j].getEmergencyType();
+                    nonEmergencyType[countNonEmergency] = pathology[j].getEmergenceType();
                     countNonEmergency++;
                 }
             }
@@ -97,7 +97,9 @@ public class RouteGeneratorImpl implements RouteGenerator {
     public static Object[] increaseArraySizeByFive(Object[] originalArray) {
         int newSize = originalArray.length + 5;
         Object[] newArray = new Object[newSize];
-        System.arraycopy(originalArray, 0, newArray, 0, originalArray.length);
+        for(int i = 0; i < originalArray.length; i++) {
+            newArray[i] = originalArray[i];
+        }
 
         return newArray;
     }

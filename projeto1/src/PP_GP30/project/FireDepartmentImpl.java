@@ -147,7 +147,9 @@ public class FireDepartmentImpl implements FireDepartment {
         }
 
         Ambulance[] newAmbulances = new Ambulance[ambulances.length + 1];
-        System.arraycopy(ambulances, 0, newAmbulances, 0, ambulances.length);
+        for(int i = 0; i < ambulances.length; i++) {
+            newAmbulances[i] = ambulances[i];
+        }
         newAmbulances[ambulances.length] = amblnc;
         ambulances = newAmbulances;
 
@@ -248,7 +250,9 @@ public class FireDepartmentImpl implements FireDepartment {
         }
 
         DailyPlan[] newDailyPlans = new DailyPlan[dailyPlans.length + 1];
-        System.arraycopy(dailyPlans, 0, newDailyPlans, 0, dailyPlans.length);
+        for(int i = 0; i < dailyPlans.length; i++) {
+            newDailyPlans[i] = dailyPlans[i];
+        }
         newDailyPlans[dailyPlans.length] = dp;
         dailyPlans = newDailyPlans;
 
@@ -276,7 +280,9 @@ public class FireDepartmentImpl implements FireDepartment {
         }
 
         Client[] newClients = new Client[clients.length + 1];
-        System.arraycopy(clients, 0, newClients, 0, clients.length);
+        for(int i = 0; i < clients.length; i++) {
+            newClients[i] = clients[i];
+        }
         newClients[clients.length] = client;
         clients = newClients;
 
@@ -328,7 +334,9 @@ public class FireDepartmentImpl implements FireDepartment {
         }
 
         Service[] newServices = new Service[services.length + 1];
-        System.arraycopy(services, 0, newServices, 0, services.length);
+        for(int i = 0; i < services.length; i++) {
+            newServices[i] = services[i];
+        }
         newServices[services.length] = srvc;
         services = newServices;
 
